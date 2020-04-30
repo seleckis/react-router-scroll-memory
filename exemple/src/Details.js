@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const Article = styled.article`
@@ -15,10 +14,6 @@ const Article = styled.article`
 
 export default ({ match }) =>
   <div>
-    <nav>
-    <Link to="/">Home</Link>
-    <Link to="/about">About</Link>
-    </nav>
     <Article>
     <h1>Hello {match.params.id}!</h1>
     <p>

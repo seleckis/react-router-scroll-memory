@@ -1,11 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 const List = styled.ul`
   display: flex;
   padding:0;
   flex-direction: column;
+  ${({ isCustomElement }) => isCustomElement && css`
+    overflow: auto;
+    height: 400px;
+  ` }
 `;
 
 const ListEleme = styled.li`
@@ -20,14 +24,10 @@ const ListEleme = styled.li`
   }
 `;
 
-export default () =>
+export default ({ setRef, isCustomElement }) =>
   <div>
-  <nav>
-    <Link to="/">Home</Link>
-    <Link to="/about">About</Link>
-    </nav>
     <h1>List of element</h1>
-    <List>
+    <List isCustomElement={isCustomElement} ref={setRef}>
       <ListEleme><Link to="/detail/1">Element 1</Link></ListEleme>
       <ListEleme><Link to="/detail/2">Element 2</Link></ListEleme>
       <ListEleme><Link to="/detail/3">Element 3</Link></ListEleme>

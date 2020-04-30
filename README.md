@@ -40,7 +40,19 @@ import ScrollMemory from 'react-router-scroll-memory';
 
 ### New Feature
 
-If you use your app inside a element, you can use props "elementID" for memorise scroll position of your element instead body scroll.
+If you use your app inside a element, you can pass `ref` of this element for memorise scroll position of your element instead body scroll.
+
+```jsx
+  const divRef = useRef(null);
+  return (
+    <BrowserRouter>
+      <ScrollMemory elementRef={divRef} />
+      <div ref={divRef}>
+        <App />
+      </div>
+    </BrowserRouter>
+  );
+```
 
 #### Tested on Browser:
 

@@ -16,9 +16,9 @@ export const getScrollPage = (): number => {
  * get the scroll of a parent element
  * @return {number}
  */
-export const getScrollElement = (elementId: string): number => {
+export const getScrollElement = (ref: Object): number => {
   let elemScrollTop = 0;
-  const element = document.getElementById(elementId);
+  const element = ref.current;
   if (element !== null) {
     elemScrollTop = element.scrollTop;
   }
@@ -42,9 +42,9 @@ export const scrollTo = (scrollnumber: number = 0): number =>
  */
 export const scrollToElement = (
   scrollnumber: number = 0,
-  elementId: string
+  ref: Object
 ): void => {
-  const element = document.getElementById(elementId);
+  const element = ref.current;
   if (element) {
     element.scrollTop = scrollnumber;
   }

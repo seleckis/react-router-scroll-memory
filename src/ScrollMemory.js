@@ -11,7 +11,7 @@ import {
 
 type ScrollProps = {
   location: Object,
-  elementID?: string
+  elementRef?: Object
 };
 
 class ScrollMemory extends Component<ScrollProps> {
@@ -50,14 +50,14 @@ class ScrollMemory extends Component<ScrollProps> {
       next.hash === "";
 
     // get scroll of the page or the element before change location
-    const scroll = this.props.elementID
-      ? getScrollElement(this.props.elementID)
+    const scroll = this.props.elementRef
+      ? getScrollElement(this.props.elementRef)
       : getScrollPage();
 
     if (locationChanged) {
       // pass page or element scroll to top
-      this.props.elementID
-        ? scrollToElement(0, this.props.elementID)
+      this.props.elementRef
+        ? scrollToElement(0, this.props.elementRef)
         : scrollTo(0);
       // save scroll with key location
       this.url.set(key, scroll);
@@ -81,8 +81,8 @@ class ScrollMemory extends Component<ScrollProps> {
 
     // if find in url map => scroll to position
     if (nextFind) {
-      this.props.elementID
-        ? scrollToElement(nextFind, this.props.elementID)
+      this.props.elementRef
+        ? scrollToElement(nextFind, this.props.elementRef)
         : scrollTo(nextFind);
     }
   }
